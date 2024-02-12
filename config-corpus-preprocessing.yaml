@@ -3,7 +3,9 @@ MTUOC: /MTUOC
 preprocess_type: sentencepiece
 #one of smt sentencepiece subwordnmt
 
-DELETE_TEMP: True
+VERBOSE: True
+LOG_FILE: process.log
+DELETE_TEMP: False
 
 corpus: corpus-ita-deu-weights.txt
 from_train_val: False
@@ -83,8 +85,4 @@ NUM_OPERATIONS: 85000
 APPLY_BPE: True
 BPE_DROPOUT: True
 BPE_DROPOUT_P: 0.1
-
-VERBOSE: True
-LOG_FILE: process.log
-DELETE_TEMP: False
 
