@@ -7,23 +7,23 @@ DELETE_TEMP: True
 
 corpus: corpus-ita-deu-weights.txt
 from_train_val: False
-train_corpus: train-ita-deu.txt
-val_corpus: val-ita-deu.txt
+train_corpus: train-eng-spa.txt
+val_corpus: val-eng-spa.txt
 valsize: 5000
 evalsize: 5000
 
-SLcode3: ita
-SLcode2: it
-TLcode3: deu
-TLcode2: de
+SLcode3: eng
+SLcode2: en
+TLcode3: spa
+TLcode2: es
 
-SL_DICT: /MTUOC/ita.dict
-TL_DICT: /MTUOC/deu.dict
+SL_DICT: /MTUOC/eng.dict
+TL_DICT: /MTUOC/spa.dict
 #state None or null.dict if not word form dictionary available for that languages
 
-SL_TOKENIZER: MTUOC_tokenizer_ita.py
+SL_TOKENIZER: MTUOC_tokenizer_eng.py
 TOKENIZE_SL: False
-TL_TOKENIZER: MTUOC_tokenizer_deu.py
+TL_TOKENIZER: MTUOC_tokenizer_spa.py
 TOKENIZE_TL: False
 
 ###PREPARATION
