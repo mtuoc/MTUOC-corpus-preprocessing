@@ -302,6 +302,7 @@ if VERBOSE:
 
 entrada=codecs.open(trainCorpus,"r",encoding="utf-8")
 sortida=codecs.open(trainPreCorpus,"w",encoding="utf-8")
+sortidaW=codecs.open("train.weigths","w",encoding="utf-8")
 
 for linia in entrada:
     toWrite=True
@@ -350,9 +351,11 @@ for linia in entrada:
             cadena=" ".join(toksl.split())+"\t"+" ".join(toktl.split())+"\t"+str(weight)
             
             sortida.write(cadena+"\n")
+            sortidaW.write(str(weight)+"\n")
     
 entrada.close()
 sortida.close()
+sortidaW.close()
 #Val CORPUS
 if VERBOSE:
     cadena="Preprocessing val corpus: "+str(datetime.now())
@@ -361,6 +364,7 @@ if VERBOSE:
 
 entrada=codecs.open(valCorpus,"r",encoding="utf-8")
 sortida=codecs.open(valPreCorpus,"w",encoding="utf-8")
+sortidaW=codecs.open("val.weigths","w",encoding="utf-8")
 
 for linia in entrada:
     toWrite=True
@@ -410,11 +414,11 @@ for linia in entrada:
             cadena=" ".join(toksl.split())+"\t"+" ".join(toktl.split())+"\t"+str(weight)
             
             sortida.write(cadena+"\n")
+            sortidaW.write(str(weight)+"\n")
     
 entrada.close()
 sortida.close()
-
-
+sortidaW.close()
 
 if preprocess_type=="sentencepiece":
     ###sentencepiece is default if no smt or subword-nmt is selected
@@ -652,7 +656,9 @@ if DELETE_TEMP:
         cadena="Deleting temporal files: "+str(datetime.now())
         print(cadena)
         logfile.write(cadena+"\n")
-    todeletetemp=["trainSL.temp","trainTL.temp","trainPreSL.temp","trainPreTL.temp","valPreSL.temp","valPreTL.temp","train-pre-"+SLcode3+"-"+TLcode3+".txt","val-pre-"+SLcode3+"-"+TLcode3+".txt"]
+            
+        valPreTL.temp
+    todeletetemp=["trainPreSL.temp","trainPreW.temp","trainTL.temp","valPreSL.temp","valPreW.temp","trainPreTL.temp","trainSL.temp","trainW.temp","valPreTL.temp"]
     for td in todeletetemp:
         try:
             os.remove(td)
