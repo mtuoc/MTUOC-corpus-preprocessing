@@ -1,0 +1,90 @@
+MTUOC: /MTUOC
+
+preprocess_type: sentencepiece
+#one of smt sentencepiece subwordnmt
+
+DELETE_TEMP: True
+
+corpus: corpus-ita-deu-weights.txt
+from_train_val: False
+train_corpus: train-ita-deu.txt
+val_corpus: val-ita-deu.txt
+valsize: 5000
+evalsize: 5000
+
+SLcode3: ita
+SLcode2: it
+TLcode3: deu
+TLcode2: de
+
+SL_DICT: /MTUOC/ita.dict
+TL_DICT: /MTUOC/deu.dict
+#state None or null.dict if not word form dictionary available for that languages
+
+SL_TOKENIZER: MTUOC_tokenizer_ita.py
+TOKENIZE_SL: False
+TL_TOKENIZER: MTUOC_tokenizer_deu.py
+TOKENIZE_TL: False
+
+###PREPARATION
+REPLACE_EMAILS: True
+EMAIL_CODE: "@EMAIL@"
+REPLACE_URLS: True
+URL_CODE: "@URL@"
+
+TRAIN_SL_TRUECASER: True
+TRUECASE_SL: False
+SL_TC_MODEL: auto
+#if auto the name will be tc.+SLcode2
+
+TRAIN_TL_TRUECASER: True
+TRUECASE_TL: False
+TL_TC_MODEL: auto
+#if auto the name will be tc.+TLcode2
+
+CLEAN: True
+MIN_TOK: 1
+MAX_TOK: 80
+
+MIN_CHAR: 1
+MAX_CHAR: 1000
+
+#SENTENCE PIECE and SUBWORD NMT
+bos: <s>
+#<s> or None
+eos: </s>
+#</s> or None
+JOIN_LANGUAGES: True
+SPLIT_DIGITS: True
+VOCABULARY_THRESHOLD: 50
+
+#SMT
+REPLACE_NUM: False
+NUM_CODE: "@NUM@"
+
+
+#SENTENCE PIECE
+CONTROL_SYMBOLS: ""
+USER_DEFINED_SYMBOLS: "<tag0>,<tag1>,<tag2>,<tag3>,<tag4>,<tag5>,<tag6>,<tag7>,<tag8>,<tag9>,<tag10>,</tag0>,</tag1>,</tag2>,</tag3>,</tag4>,</tag5>,</tag6>,</tag7>,</tag8>,</tag9>,</tag10>,<tag0/>,<tag1/>,<tag2/>,<tag3/>,<tag4/>,<tag5/>,<tag6/>,<tag7/>,<tag8/>,<tag9/>,<tag10/>,"
+SP_MODEL_PREFIX: spmodel
+MODEL_TYPE: bpe
+#one of unigram, bpe, char, word
+VOCAB_SIZE: 64000
+CHARACTER_COVERAGE: 1.0
+CHARACTER_COVERAGE_SL: 1.0
+CHARACTER_COVERAGE_TL: 1.0
+INPUT_SENTENCE_SIZE: 5000000
+
+#SUBWORD NMT
+LEARN_BPE: True
+JOINER: "@@"
+#use one of ￭ or @@
+NUM_OPERATIONS: 85000
+APPLY_BPE: True
+BPE_DROPOUT: True
+BPE_DROPOUT_P: 0.1
+
+VERBOSE: True
+LOG_FILE: process.log
+DELETE_TEMP: False
+
