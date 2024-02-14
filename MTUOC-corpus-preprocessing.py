@@ -302,7 +302,7 @@ if VERBOSE:
 
 entrada=codecs.open(trainCorpus,"r",encoding="utf-8")
 sortida=codecs.open(trainPreCorpus,"w",encoding="utf-8")
-sortidaW=codecs.open("train.weigths","w",encoding="utf-8")
+sortidaW=codecs.open("train.weights","w",encoding="utf-8")
 
 for linia in entrada:
     toWrite=True
@@ -364,7 +364,7 @@ if VERBOSE:
 
 entrada=codecs.open(valCorpus,"r",encoding="utf-8")
 sortida=codecs.open(valPreCorpus,"w",encoding="utf-8")
-sortidaW=codecs.open("val.weigths","w",encoding="utf-8")
+sortidaW=codecs.open("val.weights","w",encoding="utf-8")
 
 for linia in entrada:
     toWrite=True
