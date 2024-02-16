@@ -7,7 +7,7 @@ VERBOSE: True
 LOG_FILE: process.log
 DELETE_TEMP: False
 
-corpus: corpus-ita-deu-weights.txt
+corpus: corpus-eng-spa-weights.txt
 from_train_val: False
 train_corpus: train-eng-spa.txt
 val_corpus: val-eng-spa.txt
