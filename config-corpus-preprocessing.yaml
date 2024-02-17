@@ -44,7 +44,7 @@ TRUECASE_TL: False
 TL_TC_MODEL: auto
 #if auto the name will be tc.+TLcode2
 
-CLEAN: True
+CLEAN: False
 MIN_TOK: 1
 MAX_TOK: 80
 
