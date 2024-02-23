@@ -219,6 +219,8 @@ if not from_train_val:
 else:
     trainCorpus=train_corpus
     valCorpus=val_corpus
+    trainPreCorpus="train-pre-"+SLcode3+"-"+TLcode3+".txt"
+    valPreCorpus="val-pre-"+SLcode3+"-"+TLcode3+".txt"
 
 
 if VERBOSE:
