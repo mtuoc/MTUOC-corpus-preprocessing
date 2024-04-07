@@ -35,11 +35,15 @@ REPLACE_URLS: True
 URL_CODE: "@URL@"
 
 TRAIN_SL_TRUECASER: True
+TRAIN_SL_TRUECASER_MAXLINES: 10000000
+#-1 no limit
 TRUECASE_SL: False
 SL_TC_MODEL: auto
 #if auto the name will be tc.+SLcode2
 
 TRAIN_TL_TRUECASER: True
+TRAIN_TL_TRUECASER_MAXLINES: 10000000
+#-1 no limit
 TRUECASE_TL: False
 TL_TC_MODEL: auto
 #if auto the name will be tc.+TLcode2

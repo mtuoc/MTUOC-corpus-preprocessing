@@ -120,6 +120,7 @@ URL_CODE=config["URL_CODE"]
 
 
 TRAIN_SL_TRUECASER=config["TRAIN_SL_TRUECASER"]
+TRAIN_SL_TRUECASER_MAXLINES=int(config["TRAIN_SL_TRUECASER_MAXLINES"])
 SL_DICT=config["SL_DICT"]
 TRUECASE_SL=config["TRUECASE_SL"]
 SL_TC_MODEL=config["SL_TC_MODEL"]
@@ -127,6 +128,7 @@ if SL_TC_MODEL=="auto":
     SL_TC_MODEL="tc."+SLcode2
 
 TRAIN_TL_TRUECASER=config["TRAIN_TL_TRUECASER"]
+TRAIN_TL_TRUECASER_MAXLINES=int(config["TRAIN_TL_TRUECASER_MAXLINES"])
 TL_DICT=config["TL_DICT"]
 TRUECASE_TL=config["TRUECASE_TL"]
 TL_TC_MODEL=config["TL_TC_MODEL"]
@@ -262,7 +264,8 @@ if TRAIN_SL_TRUECASER:
         cadena="Training SL Truecaser: "+str(datetime.now())
         print(cadena)
         logfile.write(cadena+"\n")
-    SLTrainer=TC_Trainer(MTUOC, SL_TC_MODEL, "trainSL.temp", SL_DICT, SL_TOKENIZER)
+        logfile.flush()
+    SLTrainer=TC_Trainer(MTUOC, SL_TC_MODEL, "trainSL.temp", SL_DICT, SL_TOKENIZER,maxlines=TRAIN_SL_TRUECASER_MAXLINES)
     SLTrainer.train_truecaser()
 
 if TRAIN_TL_TRUECASER:
@@ -270,7 +273,8 @@ if TRAIN_TL_TRUECASER:
         cadena="Training TL Truecaser: "+str(datetime.now())
         print(cadena)
         logfile.write(cadena+"\n")
-    TLTrainer=TC_Trainer(MTUOC, TL_TC_MODEL, "trainTL.temp", TL_DICT, TL_TOKENIZER)
+        logfile.flush()
+    TLTrainer=TC_Trainer(MTUOC, TL_TC_MODEL, "trainTL.temp", TL_DICT, TL_TOKENIZER,maxlines=TRAIN_TL_TRUECASER_MAXLINES)
     TLTrainer.train_truecaser()    
 
 if TRUECASE_SL:
@@ -308,6 +312,7 @@ if VERBOSE:
     cadena="Preprocessing train corpus: "+str(datetime.now())
     print(cadena)
     logfile.write(cadena+"\n")
+    logfile.flush()
 
 
 entrada=codecs.open(trainCorpus,"r",encoding="utf-8")
@@ -371,6 +376,7 @@ if VERBOSE:
     cadena="Preprocessing val corpus: "+str(datetime.now())
     print(cadena)
     logfile.write(cadena+"\n")
+    logfile.flush()
 
 entrada=codecs.open(valCorpus,"r",encoding="utf-8")
 sortida=codecs.open(valPreCorpus,"w",encoding="utf-8")
@@ -436,11 +442,13 @@ if preprocess_type=="sentencepiece":
         cadena="Start of sentencepiece process: "+str(datetime.now())
         print(cadena)
         logfile.write(cadena+"\n")
+        logfile.flush()
 
     if VERBOSE:
         cadena="Start of sentencepiece training: "+str(datetime.now())
         print(cadena)
         logfile.write(cadena+"\n")
+        logfile.flush()
 
     entrada=codecs.open(trainPreCorpus,"r",encoding="utf-8")
     sortidaSL=codecs.open("trainPreSL.temp","w",encoding="utf-8")
@@ -489,6 +497,7 @@ if preprocess_type=="sentencepiece":
         cadena="Training sentencepiece: "+str(datetime.now())
         print(cadena)
         logfile.write(cadena+"\n")
+        logfile.flush()
     bosSP=True
     eosSP=True
     if BOS=="None": bosSP=False
@@ -499,6 +508,7 @@ if preprocess_type=="sentencepiece":
         cadena="Encoding corpora with sentencepiece: "+str(datetime.now())
         print(cadena)
         logfile.write(cadena+"\n")
+        logfile.flush()
     
     if JOIN_LANGUAGES:
         SP_MODEL=SP_MODEL_PREFIX+".model"
@@ -657,6 +667,7 @@ if VERBOSE:
     cadena="End of process: "+str(datetime.now())
     print(cadena)
     logfile.write(cadena+"\n")
+    logfile.flush()
 
 #DELETE TEMPORAL FILES
 
