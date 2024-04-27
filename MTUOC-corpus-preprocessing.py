@@ -678,7 +678,7 @@ if DELETE_TEMP:
         print(cadena)
         logfile.write(cadena+"\n")
             
-        valPreTL.temp
+        
     todeletetemp=["trainPreSL.temp","trainPreW.temp","trainTL.temp","valPreSL.temp","valPreW.temp","trainPreTL.temp","trainSL.temp","trainW.temp","valPreTL.temp"]
     for td in todeletetemp:
         try:
